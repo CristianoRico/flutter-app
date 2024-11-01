@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'dart:developer' as developer;
 
 void main() {
   runApp(const MainApp());
@@ -11,6 +13,9 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        appBar : AppBar(
+          title: const Text('Cristiano Rico Carvalho'),
+        ),
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -84,7 +89,23 @@ class MainApp extends StatelessWidget {
                 ),
               ),
               // Tombol Lihat Lokasi
-              Container(),
+              Container(
+                margin: const EdgeInsets.all(8.0),
+                  child: ElevatedButton(
+                    onPressed: () async {
+                      // Kode untuk menampilkan lokasi
+                      const url =
+                          'https://www.google.com/maps/search/?api=1&query=Universitas+Multi+Data+Palembang';
+                      final uri = Uri.parse(url);
+                      if (await canLaunchUrl(uri)) {
+                        await launchUrl(uri);
+                      } else {
+                        developer.log('Could not launch $url');
+                      }
+                    },
+                    child: const Text('Lihat Lokasi'),
+                  ),
+              ),
             ],
           ),
         ),
