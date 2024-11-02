@@ -43,6 +43,29 @@ class MainApp extends StatelessWidget {
                   style: TextStyle(fontSize: 16.0, fontFamily: 'Oxygen'),
                 ),
               ),
+              Container(
+                margin: const EdgeInsets.symmetric(vertical: 16.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(
+                      icon: const Icon(Icons.phone),
+                      color: Colors.blue,
+                      onPressed: () {
+                        debugPrint('Phone button pressed');
+                      },
+                    ),
+                    IconButton(
+                      icon: const Icon(Icons.email),
+                      color: Colors.red,
+                      onPressed: () {
+                        debugPrint('Email button pressed');
+                      },
+                    ),
+                  ],
+                ),
+              ),
+
               // List Gambar Horizontal
               SizedBox(
                 height: 150,
